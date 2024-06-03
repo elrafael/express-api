@@ -1,8 +1,6 @@
 import express, { Express, Request, Response } from "express"
-
-const dotenv = require("dotenv")
-
-const tasks = require("./controllers/tasks")
+import dotenv from "dotenv"
+import taskRouter from "./controllers/tasks"
 
 dotenv.config()
 
@@ -15,7 +13,7 @@ app.get("/", (req: Request, res: Response) => {
   res.send("Hello World")
 })
 
-app.use("/tasks", tasks)
+app.use("/tasks", taskRouter)
 
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`)
