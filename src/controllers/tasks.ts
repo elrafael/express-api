@@ -1,7 +1,8 @@
-const express = require("express")
+import express, { Request, Response } from "express"
+import { Task } from "../interfaces/taks"
 const router = express.Router()
 
-const tasks = [
+const tasks: Task[] = [
   {
     id: 1,
     name: "Bring milk and bread.",
@@ -12,12 +13,12 @@ const tasks = [
   },
 ]
 
-router.get("/", (req, res) => {
+router.get("/", (req: Request, res: Response) => {
   res.send(tasks)
 })
 
-router.post("/", (req, res) => {
-  const task = {
+router.post("/", (req: Request, res: Response) => {
+  const task: Task = {
     id: Math.floor(Math.random() * (100 - 1) + 1),
     name: req.body.name,
   }

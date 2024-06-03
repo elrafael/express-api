@@ -1,4 +1,5 @@
-const express = require("express")
+import express, { Express, Request, Response } from "express"
+
 const dotenv = require("dotenv")
 
 const tasks = require("./controllers/tasks")
@@ -6,11 +7,11 @@ const tasks = require("./controllers/tasks")
 dotenv.config()
 
 const app = express()
-const PORT = process.env.PORT
+const PORT = process.env.PORT || 3000
 
 app.use(express.json())
 
-app.get("/", (req, res) => {
+app.get("/", (req: Request, res: Response) => {
   res.send("Hello World")
 })
 
