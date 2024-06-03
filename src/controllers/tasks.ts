@@ -1,6 +1,6 @@
 import express, { Request, Response } from "express"
 import { Task } from "../interfaces/taks"
-const router = express.Router()
+const taskRouter = express.Router()
 
 const tasks: Task[] = [
   {
@@ -13,18 +13,18 @@ const tasks: Task[] = [
   },
 ]
 
-router.get("/", (req: Request, res: Response) => {
+taskRouter.get("/", (req: Request, res: Response) => {
   res.send(tasks)
 })
 
-router.post("/", (req: Request, res: Response) => {
+taskRouter.post("/", (req: Request, res: Response) => {
   const task: Task = {
     id: Math.floor(Math.random() * (100 - 1) + 1),
     name: req.body.name,
   }
   tasks.push(task)
 
-  res.send(tasks)
+  res.send(task)
 })
 
-module.exports = router
+export default taskRouter
